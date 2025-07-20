@@ -44,9 +44,21 @@ def plus(num,size):
             num +=10**i
             return num
     return num+1
-# Press the green button inb the gutter to run the script.
+def xor_file(input_filename, output_filename, key=5):
+    # Open the input file in binary read mode and output file in binary write mode
+    with open(input_filename, 'rb') as infile, open(output_filename, 'wb') as outfile:
+        while True:
+            byte = infile.read(1)  # Read in chunks for efficiency
+            if not byte:
+                break
+            # XOR each byte in the chunk
+            encrypted_chunk = bytes([byte[0] ^ key])
+            outfile.write(encrypted_chunk)
 if __name__ == '__main__':
     #print(binaryCheat(42,8))
-    print(binary(42,8))
+    file1 ="tryText.txt"
+    file2 = "outPutFile.txt"
+    xor_file(file1,file2)
+    #print(binary(42,8))
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
